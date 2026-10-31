@@ -1,7 +1,21 @@
-# HAR Reader
+# HarLens
 
 > **An advanced, offline-first HTTP Archive (HAR) analyzer and multi-session traffic inspector designed for high-performance network debugging.**  
-> Analyzing complex HTTP archive files across multiple sessions and microservices often leads to browser memory bloat, unreadable payloads, and fragmented workflows; **HAR Reader** solves this by providing a unified, client-side engine that ingests, normalizes, and cross-correlates multi-archive network logs with native format previews, Arabic/Unicode deep search, JSON table unrolling, and native Excel XLSX export.
+> Analyzing complex HTTP archive files across multiple sessions and microservices often leads to browser memory bloat, unreadable payloads, and fragmented workflows; **HarLens** solves this by providing a unified, client-side engine that ingests, normalizes, and cross-correlates multi-archive network logs with native format previews, Arabic/Unicode deep search, JSON table unrolling, and native Excel XLSX export.
+
+[![Live Web Tool](https://img.shields.io/badge/Live%20App-harlens.vercel.app-2563eb?style=for-the-badge&logo=vercel&logoColor=white)](https://harlens.vercel.app/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-00e599?style=for-the-badge)](LICENSE)
+
+---
+
+## 🚀 Live Access
+
+**No download, installation, or configuration required.**  
+Access the web tool directly from any browser or mobile device:
+
+### 👉 **[https://harlens.vercel.app/](https://harlens.vercel.app/)**
+
+Simply drag & drop your `.har` file(s) into the browser window to start analyzing immediately. All processing runs 100% locally on your machine—no data is uploaded to any server.
 
 ---
 
@@ -14,7 +28,7 @@
   - **Multimedia Previews**: In-app rendering for base64 images, interactive PDF documents, and audio/video playback.
   - **Interactive JSON Viewer**: Syntax-highlighted JSON viewer with one-click value copying and integrated in-code search.
 - **Interactive JSON Table Unroller**: Convert nested JSON arrays and API responses into flat interactive tables with nested object drawers.
-- **Smart Duplicate Merging**: Automatically detect unique identifier columns (e.g., `id`, `uuid`, `student_id`, `email`) and collapse redundant pagination calls into single composite rows.
+- **Smart Duplicate Merging**: Automatically detect unique identifier columns (e.g., `id`, `uuid`, `customer_id`, `email`) and collapse redundant pagination calls into single composite rows.
 - **Column Exclusion & Dynamic Resizing**: Custom column toggle menu and drag-to-resize column headers for granular data analysis.
 - **Zero-Dependency XLSX & CSV Export**: Export analyzed tables directly into native Microsoft Excel (`.xlsx` SpreadsheetML) or UTF-8 CSV without relying on external CDNs or heavy npm packages.
 - **Hierarchical Tree Diagram**: Visual domain-and-route diagram providing instant architectural visibility of endpoint topologies.
@@ -32,7 +46,7 @@
 - **Deployment Platform**: Optimized for Vercel static edge hosting with HTTP security headers and aggressive asset caching.
 
 ```
-HARadvanced/
+HarLens/
 ├── assets/
 │   └── icon.svg              # Vector application icon
 ├── css/
@@ -51,36 +65,7 @@ HARadvanced/
 
 ---
 
-## Prerequisites & Setup
-
-### Prerequisites
-- Any modern web browser supporting ES6+ (Google Chrome, Mozilla Firefox, Microsoft Edge, Safari).
-- *(Optional)* [Node.js](https://nodejs.org/) (v16.0.0 or higher) for local server preview.
-
-### Installation
-
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/FAYSAL-Q8/HARadvanced.git
-   cd HARadvanced
-   ```
-
-2. **Run locally**:
-   Since HAR Reader is built with zero runtime dependencies, you can open `index.html` directly in your browser or serve it with any static server:
-
-   ```bash
-   # Using npx serve (Node.js)
-   npx serve .
-
-   # Or using Python 3
-   python -m http.server 3000
-   ```
-
-3. Open your browser and navigate to `http://localhost:3000`.
-
----
-
-## Usage & Execution Guide
+## Usage Guide
 
 ### 1. Ingesting HAR Archives
 - Drag and drop one or more `.har` files into the universal dropzone or click to select files.
@@ -105,17 +90,6 @@ HARadvanced/
 - Toggle **Merge Duplicates** to collapse repeated items sharing a common key.
 - Toggle columns on/off using the **Columns** dropdown.
 - Click **Export XLSX** to generate a native `.xlsx` spreadsheet on the fly.
-
-### 5. Deploying to Vercel
-
-Deploy instantly to Vercel with zero configuration:
-
-```bash
-npm install -g vercel
-vercel
-```
-
-Or connect the GitHub repository directly in the [Vercel Dashboard](https://vercel.com/new). The included `vercel.json` automatically configures clean URLs and security headers.
 
 ---
 

@@ -1,5 +1,5 @@
 {
-  "name": "HAR Reader",
+  "name": "HarLens",
   "version": "2.1.0",
   "description": "Multi-archive HTTP viewer with native format previews, Arabic/Unicode search, tree diagram, JSON table unroller with column exclusion & XLSX export",
   "category": "Dev",

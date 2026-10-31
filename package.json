@@ -1,7 +1,7 @@
 {
-  "name": "har-reader",
+  "name": "harlens",
   "version": "2.1.0",
-  "description": "Production-grade multi-archive HTTP Archive (HAR) analyzer and viewer with native format previews, Arabic/Unicode search, tree diagram, JSON unroller, and XLSX export.",
+  "description": "High-performance, offline-first multi-archive HTTP (HAR) analyzer with native format previews, Arabic/Unicode search, tree diagram, JSON table unroller, duplicate merging, and client-side XLSX export.",
   "main": "index.html",
   "scripts": {
     "start": "npx serve .",
@@ -22,8 +22,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/FAYSAL-Q8/HARadvanced.git"
+    "url": "https://github.com/FAYSAL-Q8/harlens.git"
   },
-  "homepage": "https://github.com/FAYSAL-Q8/HARadvanced",
+  "homepage": "https://harlens.vercel.app/",
   "license": "MIT"
 }
