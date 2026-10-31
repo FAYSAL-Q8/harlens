@@ -1,0 +1,309 @@
+<!--
+  Author: Faysal Alibrahim
+  GitHub: https://github.com/FAYSAL-Q8
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>HAR Reader - Advanced Multi-Archive HTTP Analyzer</title>
+  <meta name="description" content="Production-grade multi-archive HTTP Archive (HAR) analyzer and viewer with native format previews, Arabic/Unicode search, tree diagram, JSON unroller, and XLSX export." />
+  <meta name="theme-color" content="#161a23" />
+  <meta property="og:title" content="HAR Reader - HTTP Archive Analyzer" />
+  <meta property="og:description" content="High-performance client-side HAR viewer with multi-file merging, JSON unrolling, and XLSX export." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" type="image/svg+xml" href="assets/icon.svg" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="app-title-group">
+        <div class="app-icon">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
+            <line x1="8" y1="17" x2="16" y2="17"/>
+          </svg>
+        </div>
+        <h1 class="app-title">HAR Reader</h1>
+      </div>
+      <div class="header-actions">
+        <button id="restoreDeletedBtn" class="btn btn-sm btn-danger" style="display:none;" onclick="restoreAllDeleted()" title="Restore suppressed requests">
+          Restore (<span id="deletedCount">0</span>)
+        </button>
+        <button class="btn btn-sm" id="combinerNavBtn" style="display:none;" onclick="openCombinerModal()" title="View prepared path tables or combine requests">
+          Path Tables (<span id="preparedPathsCountBadge">0</span>)
+        </button>
+        <button id="themeToggleBtn" class="theme-btn" onclick="toggleTheme()" title="Toggle Dark/Light Mode">
+          <span id="themeIcon">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+          </span>
+        </button>
+        <button class="btn btn-sm" onclick="clearAllArchives()">Clear</button>
+      </div>
+    </header>
+
+    <!-- Universal Dropzone Area -->
+    <section id="harDropzone" class="har-dropzone">
+      <input type="file" id="harFileInput" accept="*/*" multiple style="display:none;" />
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
+      </svg>
+      <span style="font-weight:600;font-size:13px;">Choose HAR File(s) or Drop Anywhere</span>
+      <span style="font-size:11px;color:var(--text-muted);">Select one or multiple .har, .json, or raw HTTP log files to load and combine</span>
+    </section>
+
+    <!-- Main Content -->
+    <main id="harViewerContent" style="display:none; flex-direction:column; gap:8px;">
+      <!-- Multi-Archive Switcher Bar -->
+      <div class="card" style="padding:6px 10px; display:flex; flex-direction:column; gap:4px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:4px;">
+          <span style="font-weight:700;font-size:11.5px;color:var(--text-muted);text-transform:uppercase;">Imported Archives</span>
+          <button class="archive-add-btn" onclick="document.getElementById('harFileInput').click()">+ Add More Files</button>
+        </div>
+        <div id="archivesBar" class="archives-bar"></div>
+      </div>
+
+      <!-- Metrics & Archive Title -->
+      <div class="card" style="padding:8px 10px; display:flex; flex-direction:column; gap:6px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:6px;">
+          <span id="archiveLabel" style="font-weight:700;font-size:12.5px;color:var(--text-main);">Archive</span>
+        </div>
+
+        <div class="metrics-row">
+          <div class="metric-item">Total: <b id="metricTotal">0</b></div>
+          <div class="metric-item">Visible: <b id="metricVisible">0</b></div>
+          <div class="metric-item">Errors: <b id="metricFailed" style="color:var(--danger)">0</b></div>
+          <div class="metric-item">Transferred: <b id="metricSize">0 B</b></div>
+          <div class="metric-item">Duration: <b id="metricTime">0s</b></div>
+        </div>
+      </div>
+
+      <!-- View Mode Bar -->
+      <div class="card view-mode-bar" style="padding:6px 10px;">
+        <div class="segmented-group">
+          <button class="seg-btn active" data-mode="flat" onclick="setViewMode('flat')">Flat List</button>
+          <button class="seg-btn" data-mode="domain" onclick="setViewMode('domain')">By Domain</button>
+          <button class="seg-btn" data-mode="path" onclick="setViewMode('path')">By Base Path</button>
+          <button class="seg-btn" data-mode="diagram" onclick="setViewMode('diagram')">Tree Diagram</button>
+        </div>
+
+        <div id="groupControlBtns" class="group-control-bar" style="display:none;">
+          <span id="groupSummaryBadge" class="group-summary-badge">0 groups</span>
+          <div class="group-control-actions">
+            <input type="search" id="groupFilterSearch" class="search-input group-search-input" placeholder="Quick filter paths..." oninput="renderCurrentView()" />
+            <select id="groupSortSelect" class="filter-select group-sort-select" onchange="renderCurrentView()">
+              <option value="count_desc">Calls (High → Low)</option>
+              <option value="name_asc">Name (A → Z)</option>
+              <option value="errors_desc">Errors (High → Low)</option>
+            </select>
+            <button class="btn btn-sm" onclick="expandAllGroups()">Expand All</button>
+            <button class="btn btn-sm" onclick="collapseAllGroups()">Collapse All</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Filter & Search Strip -->
+      <section class="card" style="padding:6px 10px; display:flex; flex-direction:column; gap:6px;">
+        <div class="filter-strip">
+          <input type="search" id="filterSearch" class="search-input" placeholder="Deep Search: URLs, headers, payloads, bodies (Unicode & Arabic normalized)..." />
+          <select id="filterMethod" class="filter-select">
+            <option value="ALL">All Methods</option>
+            <option value="GET">GET</option>
+            <option value="POST">POST</option>
+            <option value="PUT">PUT</option>
+            <option value="DELETE">DELETE</option>
+            <option value="PATCH">PATCH</option>
+            <option value="OPTIONS">OPTIONS</option>
+          </select>
+          <select id="filterStatus" class="filter-select">
+            <option value="ALL">All Status</option>
+            <option value="2xx">2xx Success</option>
+            <option value="3xx">3xx Redir</option>
+            <option value="4xx">4xx Client Err</option>
+            <option value="5xx">5xx Server Err</option>
+            <option value="ERR">Errors (4xx/5xx/0)</option>
+          </select>
+        </div>
+
+        <!-- Asset Type Pills -->
+        <div class="category-pills" id="assetCategoryPills">
+          <button class="cat-pill active" data-type="ALL" onclick="setAssetTypeFilter('ALL')">All</button>
+          <button class="cat-pill" data-type="json" onclick="setAssetTypeFilter('json')">JSON</button>
+          <button class="cat-pill" data-type="html" onclick="setAssetTypeFilter('html')">HTML</button>
+          <button class="cat-pill" data-type="js" onclick="setAssetTypeFilter('js')">JS</button>
+          <button class="cat-pill" data-type="css" onclick="setAssetTypeFilter('css')">CSS</button>
+          <button class="cat-pill" data-type="img" onclick="setAssetTypeFilter('img')">Images</button>
+          <button class="cat-pill" data-type="pdf" onclick="setAssetTypeFilter('pdf')">PDF</button>
+          <button class="cat-pill" data-type="xlsx" onclick="setAssetTypeFilter('xlsx')">Sheets</button>
+          <button class="cat-pill" data-type="media" onclick="setAssetTypeFilter('media')">Media</button>
+          <button class="cat-pill" data-type="other" onclick="setAssetTypeFilter('other')">Other</button>
+        </div>
+      </section>
+
+      <!-- Request Items List Container -->
+      <section id="requestsList" class="requests-list"></section>
+
+      <!-- Tree Diagram Container -->
+      <section id="diagramView" class="diagram-canvas" style="display:none;"></section>
+    </main>
+
+    <!-- Floating Selection Action Bar -->
+    <div id="selectionActionBar" class="selection-action-bar" style="display:none;">
+      <div class="sel-count-info">
+        <span id="selectedCountBadge" class="badge badge-primary">0</span>
+        <span id="selectedCountText">selected</span>
+      </div>
+      <div class="sel-actions">
+        <button class="btn btn-sm" onclick="selectAllVisibleRequests(true)">Select All</button>
+        <button class="btn btn-sm" onclick="clearSelectedRequests()">Deselect</button>
+        <button class="btn btn-sm btn-danger" onclick="deleteSelectedRequests()" title="Suppress selected requests">Delete</button>
+        <button class="btn btn-sm btn-primary" onclick="openSelectedTrafficTableModal()">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width:13px;height:13px;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>
+          Merge as Table
+        </button>
+      </div>
+    </div>
+
+    <!-- UI Footer -->
+    <footer class="app-footer">
+      Developed by <a href="https://github.com/FAYSAL-Q8" target="_blank" rel="noopener noreferrer" class="footer-link">FA</a>
+    </footer>
+  </div>
+
+  <!-- Detail Inspector Modal -->
+  <div id="detailModal" class="detail-modal" onclick="if(event.target === this) closeDetailModal()">
+    <div class="detail-card">
+      <div class="detail-header">
+        <div id="detailHeaderTitle" style="display:flex; align-items:center; gap:6px; min-width:0; overflow:hidden;">
+          <div id="detailTypeIconSlot"></div>
+          <span id="detailMethodTag" class="method-tag">GET</span>
+          <span id="detailStatusTag" class="status-tag status-2xx">200</span>
+          <span id="detailTitle" class="detail-title">Request Details</span>
+        </div>
+        <button class="btn btn-sm" onclick="closeDetailModal()">✕ Close</button>
+      </div>
+
+      <div class="detail-tabs">
+        <button class="detail-tab-btn active" id="detailTabPreviewBtn" data-tab="preview" onclick="setDetailTab('preview')">Format Preview</button>
+        <button class="detail-tab-btn" id="detailTabSourceBtn" data-tab="source" onclick="setDetailTab('source')">Source Code</button>
+        <button class="detail-tab-btn" data-tab="headers" onclick="setDetailTab('headers')">Headers</button>
+        <button class="detail-tab-btn" data-tab="payload" onclick="setDetailTab('payload')">Payload</button>
+        <button class="detail-tab-btn" data-tab="query" onclick="setDetailTab('query')">Query</button>
+        <button class="detail-tab-btn" data-tab="curl" onclick="setDetailTab('curl')">cURL</button>
+        <button class="detail-tab-btn" id="jsonTableTabBtn" style="display:none;" data-tab="table" onclick="setDetailTab('table')">Table / Records</button>
+      </div>
+
+      <div id="detailBody" class="detail-body"></div>
+
+      <div class="detail-footer">
+        <div style="display:flex;gap:4px;flex-wrap:wrap;align-items:center;">
+          <button class="btn btn-sm" onclick="copyCurrentUrl()">Copy URL</button>
+          <button class="btn btn-sm" onclick="copyCurrentCurl()">Copy cURL</button>
+          <button class="btn btn-sm" onclick="copyCurrentResponse()">Copy Body</button>
+          <button class="btn btn-sm btn-danger" onclick="deleteCurrentRequest()" title="Suppress from all views">Delete Request</button>
+        </div>
+        <button class="btn btn-sm btn-primary" id="downloadResponseBtn" onclick="downloadCurrentResponse()">Download File</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Multi-Request JSON Path Combiner & Prepared Path Tables Modal -->
+  <div id="combinerModal" class="detail-modal" onclick="if(event.target === this) closeCombinerModal()">
+    <div class="detail-card">
+      <div class="detail-header">
+        <div style="display:flex; align-items:center; gap:6px;">
+          <span class="badge badge-primary">Tables</span>
+          <span style="font-weight:700;font-size:13px;">Path Tables & Combiner</span>
+        </div>
+        <button class="btn btn-sm" onclick="closeCombinerModal()">✕ Close</button>
+      </div>
+
+      <div class="detail-tabs">
+        <button class="detail-tab-btn active" id="combinerTabPreparedBtn" onclick="switchCombinerTab('prepared')">⚡ Prepared Path Tables</button>
+        <button class="detail-tab-btn" id="combinerTabCustomBtn" onclick="switchCombinerTab('custom')">Custom Combiner</button>
+      </div>
+
+      <div id="combinerModalBody" class="detail-body" style="gap:10px;">
+        <!-- Prepared Path Tables Section -->
+        <div id="preparedPathsSection" class="card" style="padding:10px; display:flex; flex-direction:column; gap:8px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:4px;">
+            <div style="font-weight:700;font-size:12.5px;color:var(--text-main);">
+              Auto-Grouped Exact Endpoint Paths
+            </div>
+            <span style="font-size:11px;color:var(--text-muted);">
+              Endpoints sharing identical path names pre-merged across all archives
+            </span>
+          </div>
+
+          <!-- Multi-Path Selection & Action Toolbar -->
+          <div class="prepared-paths-toolbar" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:6px; padding:6px 8px; background:var(--surface-subtle); border:1px solid var(--border); border-radius:var(--radius);">
+            <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap;">
+              <input type="search" id="preparedPathSearch" class="search-input" placeholder="Search prepared paths..." style="max-width:180px; padding:4px 8px; font-size:11px;" oninput="renderPreparedPathsList()" />
+              <button class="btn btn-sm" onclick="selectAllPreparedPaths(true)">Select All</button>
+              <button class="btn btn-sm" onclick="selectAllPreparedPaths(false)">Deselect All</button>
+            </div>
+            <div style="display:flex; align-items:center; gap:6px;">
+              <span id="selectedPreparedPathsCountBadge" class="badge badge-primary" style="display:none; font-size:11px;">0 paths selected</span>
+              <button class="btn btn-sm btn-primary" id="combineSelectedPathsBtn" onclick="combineSelectedPreparedPaths()" style="display:none;">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width:13px;height:13px;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>
+                Combine Selected Paths
+              </button>
+            </div>
+          </div>
+
+          <div id="preparedPathsList" class="prepared-path-list"></div>
+        </div>
+
+        <!-- Custom Combiner Section -->
+        <div id="customCombinerSection" class="card" style="display:none; padding:10px; flex-direction:column; gap:8px;">
+          <div style="font-weight:600;font-size:12px;color:var(--text-main);">
+            Select Sequential or Paged JSON Requests to Merge:
+          </div>
+          <div id="combinerReqSelector" style="max-height:160px; overflow-y:auto; border:1px solid var(--border); border-radius:6px; padding:6px; display:flex; flex-direction:column; gap:4px; background:var(--input-bg);"></div>
+          <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap; margin-top:2px;">
+            <button class="btn btn-sm" onclick="selectAllCombinerReqs(true)">Select All</button>
+            <button class="btn btn-sm" onclick="selectAllCombinerReqs(false)">Deselect All</button>
+          </div>
+
+          <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-top:6px;">
+            <div style="flex:1; min-width:180px;">
+              <label style="font-size:11px;color:var(--text-muted);display:block;margin-bottom:2px;">Target Record Path (e.g. '.' or 'items' or 'data.users'):</label>
+              <input type="text" id="combinerJsonPath" class="search-input" value="." placeholder="Root array or nested path" />
+            </div>
+            <div style="flex:1; min-width:140px;">
+              <label style="font-size:11px;color:var(--text-muted);display:block;margin-bottom:2px;">Deduplicate Key (optional):</label>
+              <input type="text" id="combinerDedupKey" class="search-input" placeholder="e.g. id, _id, code" />
+            </div>
+            <div style="align-self:flex-end;">
+              <button class="btn btn-primary" onclick="executeCombineRequests()">Merge & Unroll Table</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Combined / Selected Table Output -->
+        <div id="combinerOutputSection" style="display:none; flex-direction:column; gap:6px;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Selected Traffics Master Table Modal -->
+  <div id="selectedTableModal" class="detail-modal" onclick="if(event.target === this) closeSelectedTableModal()">
+    <div class="detail-card">
+      <div class="detail-header">
+        <div style="display:flex; align-items:center; gap:6px;">
+          <span class="badge badge-primary">Merged Table</span>
+          <span style="font-weight:700;font-size:13px;" id="selectedTableModalTitle">Selected Traffics Table</span>
+        </div>
+        <button class="btn btn-sm" onclick="closeSelectedTableModal()">✕ Close</button>
+      </div>
+      <div id="selectedTableModalBody" class="detail-body" style="padding:10px;"></div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

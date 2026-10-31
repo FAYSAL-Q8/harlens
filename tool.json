@@ -1,0 +1,10 @@
+{
+  "name": "HAR Reader",
+  "version": "2.1.0",
+  "description": "Multi-archive HTTP viewer with native format previews, Arabic/Unicode search, tree diagram, JSON table unroller with column exclusion & XLSX export",
+  "category": "Dev",
+  "icon": "terminal",
+  "entryPoint": "index.html",
+  "author": "Faysal Alibrahim",
+  "url": "https://github.com/FAYSAL-Q8"
+}

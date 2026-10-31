@@ -1,0 +1,29 @@
+{
+  "name": "har-reader",
+  "version": "2.1.0",
+  "description": "Production-grade multi-archive HTTP Archive (HAR) analyzer and viewer with native format previews, Arabic/Unicode search, tree diagram, JSON unroller, and XLSX export.",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve .",
+    "dev": "npx serve ."
+  },
+  "keywords": [
+    "har",
+    "har-viewer",
+    "http-archive",
+    "network-traffic",
+    "developer-tools",
+    "json-unroller",
+    "xlsx-export"
+  ],
+  "author": {
+    "name": "Faysal Alibrahim",
+    "url": "https://github.com/FAYSAL-Q8"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/FAYSAL-Q8/HARadvanced.git"
+  },
+  "homepage": "https://github.com/FAYSAL-Q8/HARadvanced",
+  "license": "MIT"
+}
