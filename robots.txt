@@ -1,0 +1,5 @@
+# robots.txt for HarLens (https://harlens.vercel.app/)
+User-agent: *
+Allow: /
+
+Sitemap: https://harlens.vercel.app/sitemap.xml

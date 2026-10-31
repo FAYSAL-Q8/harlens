@@ -7,15 +7,57 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>HarLens - Advanced Multi-Archive HTTP Analyzer</title>
-  <meta name="description" content="Production-grade multi-archive HTTP Archive (HAR) analyzer and viewer with native format previews, Arabic/Unicode search, tree diagram, JSON unroller, and XLSX export." />
-  <meta name="theme-color" content="#161a23" />
-  <meta property="og:title" content="HarLens - HTTP Archive Analyzer" />
-  <meta property="og:description" content="High-performance client-side HAR viewer with multi-file merging, JSON unrolling, and XLSX export." />
-  <meta property="og:url" content="https://harlens.vercel.app/" />
+  <title>HarLens - Advanced Multi-Archive HTTP Analyzer & Viewer</title>
+  <meta name="description" content="High-performance, offline-first multi-archive HTTP Archive (HAR) analyzer. Features Arabic/Unicode deep search, native format previews, JSON table unroller with duplicate merging, and client-side XLSX export." />
+  <meta name="keywords" content="har viewer, har analyzer, http archive, network traffic inspector, har to excel, json table unroller, har reader, merge har files, arabic har search, offline har tool, devtools network log" />
+  <meta name="author" content="Faysal Alibrahim" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <link rel="canonical" href="https://harlens.vercel.app/" />
+
+  <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="HarLens" />
+  <meta property="og:url" content="https://harlens.vercel.app/" />
+  <meta property="og:title" content="HarLens - Advanced Multi-Archive HTTP Analyzer" />
+  <meta property="og:description" content="High-performance client-side HAR viewer with multi-file merging, JSON unrolling, and XLSX export." />
+  <meta property="og:image" content="https://harlens.vercel.app/assets/icon.svg" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:url" content="https://harlens.vercel.app/" />
+  <meta name="twitter:title" content="HarLens - Advanced Multi-Archive HTTP Analyzer" />
+  <meta name="twitter:description" content="High-performance client-side HAR viewer with multi-file merging, JSON unrolling, and XLSX export." />
+  <meta name="twitter:image" content="https://harlens.vercel.app/assets/icon.svg" />
+
+  <meta name="theme-color" content="#161a23" />
   <link rel="icon" type="image/svg+xml" href="assets/icon.svg" />
   <link rel="stylesheet" href="css/style.css" />
+
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "HarLens",
+    "url": "https://harlens.vercel.app/",
+    "description": "High-performance, offline-first multi-archive HTTP (HAR) analyzer. Features Arabic/Unicode deep search, native format previews, JSON table unroller with duplicate merging, and client-side XLSX export.",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires modern web browser with ES6 support",
+    "softwareVersion": "2.1.0",
+    "inLanguage": ["en", "ar"],
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "author": {
+      "@type": "Person",
+      "name": "Faysal Alibrahim",
+      "url": "https://github.com/FAYSAL-Q8"
+    }
+  }
+  </script>
 </head>
 <body>
   <div class="app-container">
@@ -55,6 +97,46 @@
       </svg>
       <span style="font-weight:600;font-size:13px;">Choose HAR File(s) or Drop Anywhere</span>
       <span style="font-size:11px;color:var(--text-muted);">Select one or multiple .har, .json, or raw HTTP log files to load and combine</span>
+    </section>
+
+    <!-- Search Engine Indexable Summary & Noscript Fallback -->
+    <noscript>
+      <div style="padding:16px;margin:12px 0;background:var(--surface);border:1px solid var(--danger);border-radius:var(--radius);color:var(--text-main);font-size:12px;">
+        <strong style="color:var(--danger);">JavaScript Required:</strong> HarLens processes HTTP archives (HAR) 100% locally in your browser. Please enable JavaScript to analyze and inspect your network traffic logs.
+      </div>
+    </noscript>
+
+    <section id="seoOverviewSection" class="seo-crawler-content" aria-label="About HarLens">
+      <h2>Offline-First Multi-Archive HTTP (HAR) Analyzer & JSON Table Unroller</h2>
+      <p>
+        <strong>HarLens</strong> is a zero-dependency, privacy-first web utility for developers, security researchers, and QA engineers to inspect, search, and visualize HTTP archive (.har) network logs without uploading sensitive traffic to external servers.
+      </p>
+      <div class="seo-grid">
+        <div class="seo-feature">
+          <h3>⚡ Multi-Archive Merging</h3>
+          <p>Load and cross-correlate multiple session archives, microservice logs, or paged network calls into a unified interactive timeline.</p>
+        </div>
+        <div class="seo-feature">
+          <h3>📊 JSON Table Unroller & Duplicate Merging</h3>
+          <p>Transform deeply nested JSON payloads and API responses into flat interactive tables with live column exclusion, drag-resizing, and smart duplicate collapsing by ID.</p>
+        </div>
+        <div class="seo-feature">
+          <h3>📥 Zero-Dependency Excel XLSX Export</h3>
+          <p>Generate compliant Microsoft Excel (.xlsx SpreadsheetML) workbooks and CSV files entirely client-side without external cloud dependencies.</p>
+        </div>
+        <div class="seo-feature">
+          <h3>🔍 Deep Arabic & Unicode Normalization</h3>
+          <p>Perform multi-token search across URLs, headers, queries, and response bodies with Arabic diacritic stripping and Alef/Taa/Yaa unification.</p>
+        </div>
+        <div class="seo-feature">
+          <h3>🌐 Native Webpage Replay & Previews</h3>
+          <p>Safely replay captured HTML web pages in an isolated sandbox with local virtual asset rewriting, PDF previews, and media playback.</p>
+        </div>
+        <div class="seo-feature">
+          <h3>🌳 Hierarchical Route Tree Diagram</h3>
+          <p>Explore visual domain-and-endpoint topologies to diagnose API routes, error distributions, and latency bottlenecks.</p>
+        </div>
+      </div>
     </section>
 
     <!-- Main Content -->

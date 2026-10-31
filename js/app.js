@@ -563,6 +563,8 @@ function syncActiveArchive() {
   paths.forEach(p => collapsedGroups.add('path:' + p));
 
   document.getElementById('harDropzone').style.display = 'none';
+  const seoSec = document.getElementById('seoOverviewSection');
+  if (seoSec) seoSec.style.display = 'none';
   document.getElementById('harViewerContent').style.display = 'flex';
   document.getElementById('combinerNavBtn').style.display = 'inline-flex';
 
@@ -636,6 +638,8 @@ function clearAllArchives() {
   updatePreparedPathsSelectionUI();
   document.getElementById('harFileInput').value = '';
   document.getElementById('harDropzone').style.display = 'flex';
+  const seoSec = document.getElementById('seoOverviewSection');
+  if (seoSec) seoSec.style.display = 'block';
   document.getElementById('harViewerContent').style.display = 'none';
   document.getElementById('combinerNavBtn').style.display = 'none';
   updateRestoreButton();
