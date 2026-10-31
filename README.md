@@ -19,21 +19,47 @@ Simply drag & drop your `.har` file(s) into the browser window to start analyzin
 
 ---
 
-## Core Features
+## 📸 Visual Walkthrough & Core Capabilities
+
+### 1. Multi-Archive Traffic & Status Overview
+Inspect multi-session archives with real-time transfer metrics, HTTP status code badges (`2xx`, `3xx`, `4xx`, `5xx`), method tags, and granular asset category pills (`JSON`, `HTML`, `JS`, `CSS`, `Images`, `PDF`, `Sheets`).
+![Multi-Archive Traffic Overview](assets/screenshots/01-traffic-overview.svg)
+
+---
+
+### 2. Interactive JSON Table Unroller & Duplicate Merging
+Automatically unroll nested JSON arrays and sequential paged API calls into clean interactive spreadsheets. Collapse redundant records sharing common keys (e.g., `customer_id`, `id`, `uuid`) into aggregated rows with duplicate badges (`2x`), live column toggling, drag-resizing, and instant **Excel XLSX export**.
+![JSON Table Unroller & Duplicate Merging](assets/screenshots/02-json-table-unroller.svg)
+
+---
+
+### 3. Native Format Previews & Sandboxed Webpage Replay
+Replay captured HTML web pages directly inside an isolated sandbox with automated virtual asset rewriting that resolves CSS, JS, and image assets from within the HAR archive. Includes native format inspectors for spreadsheets, SVGs, and PDF documents.
+![Format Preview & Webpage Replay](assets/screenshots/03-format-preview.svg)
+
+---
+
+### 4. Deep Unicode & Arabic Normalized Search
+Perform instant multi-token search across URLs, request/response headers, query parameters, and payload bodies. Fully handles Arabic diacritic stripping (Tashkeel) and Alef/Taa/Yaa unification for resilient global text matching.
+![Unicode & Arabic Normalized Search](assets/screenshots/04-unicode-arabic-search.svg)
+
+---
+
+### 5. Hierarchical Route & Domain Tree Topology
+Gain immediate structural visibility over multi-domain microservice architectures, API route hierarchies, and error distributions in an interactive tree topology canvas.
+![Tree Topology Diagram](assets/screenshots/05-tree-diagram.svg)
+
+---
+
+## Core Features Summary
 
 - **Multi-Archive Ingestion & Merging**: Load multiple `.har`, `.json`, or raw HTTP logs concurrently. Toggle between individual archives or analyze a unified cross-archive timeline.
-- **Deep Unicode & Arabic Normalized Search**: Advanced multi-token search engine with Arabic diacritic (Tashkeel) stripping, Alef/Taa/Yaa unification, HTML/URL entity decoding, and full-corpus indexing across URLs, headers, queries, and response bodies.
-- **Native Format-First Inspector**:
-  - **HTML Webpage Replay**: Sandboxed preview with automated virtual asset injection that resolves CSS, JS, and image assets directly from loaded HAR archives.
-  - **Multimedia Previews**: In-app rendering for base64 images, interactive PDF documents, and audio/video playback.
-  - **Interactive JSON Viewer**: Syntax-highlighted JSON viewer with one-click value copying and integrated in-code search.
-- **Interactive JSON Table Unroller**: Convert nested JSON arrays and API responses into flat interactive tables with nested object drawers.
-- **Smart Duplicate Merging**: Automatically detect unique identifier columns (e.g., `id`, `uuid`, `customer_id`, `email`) and collapse redundant pagination calls into single composite rows.
-- **Column Exclusion & Dynamic Resizing**: Custom column toggle menu and drag-to-resize column headers for granular data analysis.
-- **Zero-Dependency XLSX & CSV Export**: Export analyzed tables directly into native Microsoft Excel (`.xlsx` SpreadsheetML) or UTF-8 CSV without relying on external CDNs or heavy npm packages.
+- **Deep Unicode & Arabic Normalized Search**: Multi-token search with diacritic stripping and full-corpus indexing across URLs, headers, queries, and bodies.
+- **Native Format-First Inspector**: In-app rendering for sandboxed HTML replay, base64 images, interactive PDFs, CSV sheets, and syntax-highlighted JSON with one-click value copying.
+- **JSON Table Unroller with Smart Duplicate Merging**: Flatten JSON records into interactive tables with automatic candidate key detection.
+- **Zero-Dependency XLSX & CSV Export**: Export analyzed tables directly into native Microsoft Excel (`.xlsx` SpreadsheetML) or UTF-8 CSV entirely client-side.
 - **Hierarchical Tree Diagram**: Visual domain-and-route diagram providing instant architectural visibility of endpoint topologies.
-- **Request Suppression & Multi-Selection**: Batch select calls for suppression, table unrolling, or inspection with persistent session tracking.
-- **Strict Client-Side Privacy**: Runs 100% locally in modern browsers or Android WebView wrappers. Zero telemetry, zero external network requests, zero data collection.
+- **Strict Client-Side Privacy**: Runs 100% locally in modern browsers. Zero telemetry, zero external network requests, zero data collection.
 
 ---
 
@@ -48,19 +74,27 @@ Simply drag & drop your `.har` file(s) into the browser window to start analyzin
 ```
 HarLens/
 ├── assets/
-│   └── icon.svg              # Vector application icon
+│   ├── icon.svg                      # Vector application icon
+│   └── screenshots/                  # Visual walkthrough illustrations
+│       ├── 01-traffic-overview.svg
+│       ├── 02-json-table-unroller.svg
+│       ├── 03-format-preview.svg
+│       ├── 04-unicode-arabic-search.svg
+│       └── 05-tree-diagram.svg
 ├── css/
-│   └── style.css             # Production stylesheet & dark/light palettes
+│   └── style.css                     # Production stylesheet & dark/light palettes
 ├── js/
-│   └── app.js                # Core parsing, table unrolling & export engine
-├── .env.example              # Environment variables template
-├── .gitignore                # Production ignore rules
-├── index.html                # Semantic HTML5 entry point
-├── LICENSE                   # MIT License
-├── package.json              # Project manifest and dev server scripts
-├── README.md                 # Executive documentation
-├── tool.json                 # Native application descriptor
-└── vercel.json               # Vercel deployment & security headers configuration
+│   └── app.js                        # Core parsing, table unrolling & export engine
+├── .env.example                      # Environment variables template
+├── .gitignore                        # Production ignore rules
+├── index.html                        # Semantic HTML5 entry point
+├── LICENSE                           # MIT License
+├── package.json                      # Project manifest and dev server scripts
+├── README.md                         # Executive documentation & visual walkthrough
+├── robots.txt                        # Search engine crawler directives
+├── sitemap.xml                       # Search engine sitemap
+├── tool.json                         # Native application descriptor
+└── vercel.json                       # Vercel deployment & security headers configuration
 ```
 
 ---

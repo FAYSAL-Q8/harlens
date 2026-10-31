@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 440" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#161a23"/>
+      <stop offset="100%" stop-color="#0d0f14"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="900" height="440" rx="12" fill="url(#bgGrad2)" stroke="#262f40" stroke-width="1.5"/>
+
+  <!-- Window Header -->
+  <circle cx="28" cy="22" r="5" fill="#f43f5e"/>
+  <circle cx="44" cy="22" r="5" fill="#f59e0b"/>
+  <circle cx="60" cy="22" r="5" fill="#00e599"/>
+  <text x="80" y="26" fill="#94a3b8" font-size="12" font-family="-apple-system, sans-serif" font-weight="600">HarLens — Path Table Unroller &amp; Duplicate Merging (/v1/customers)</text>
+
+  <!-- Duplicate Merging Toolbar -->
+  <rect x="24" y="48" width="852" height="42" rx="6" fill="#141924" stroke="#2a354b"/>
+  <!-- Checkbox Checked -->
+  <rect x="38" y="60" width="16" height="16" rx="4" fill="#00e599"/>
+  <path d="M42 68 L46 72 L51 63" stroke="#0d0f14" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <text x="62" y="73" fill="#f1f5f9" font-size="12" font-weight="700" font-family="-apple-system, sans-serif">🔀 Merge Duplicates</text>
+
+  <text x="210" y="73" fill="#94a3b8" font-size="11" font-family="-apple-system, sans-serif">Key Column:</text>
+  <rect x="282" y="56" width="110" height="26" rx="4" fill="#1e2638" stroke="#374563"/>
+  <text x="294" y="73" fill="#38bdf8" font-size="11" font-family="monospace" font-weight="700">customer_id ▾</text>
+
+  <rect x="404" y="59" width="190" height="20" rx="10" fill="#00e599" fill-opacity="0.12"/>
+  <text x="414" y="73" fill="#00e599" font-size="10.5" font-family="-apple-system, sans-serif" font-weight="600">✓ 5 unique rows (from 9 paged calls)</text>
+
+  <!-- Action Buttons -->
+  <rect x="670" y="56" width="94" height="26" rx="5" fill="#1e2638" stroke="#374563"/>
+  <text x="682" y="73" fill="#94a3b8" font-size="11" font-family="-apple-system, sans-serif">Columns (6) ▾</text>
+  <rect x="772" y="56" width="96" height="26" rx="5" fill="#00e599"/>
+  <text x="784" y="73" fill="#0d0f14" font-size="11" font-family="-apple-system, sans-serif" font-weight="700">Export XLSX</text>
+
+  <!-- Table Container -->
+  <rect x="24" y="100" width="852" height="316" rx="8" fill="#141924" stroke="#222b3a"/>
+
+  <!-- Table Header -->
+  <rect x="24" y="100" width="852" height="34" rx="8" fill="#1b2232"/>
+  <text x="40" y="122" fill="#94a3b8" font-size="10.5" font-weight="700" font-family="monospace">#</text>
+  <text x="74" y="122" fill="#94a3b8" font-size="10.5" font-weight="700" font-family="monospace">customer_id</text>
+  <text x="174" y="122" fill="#94a3b8" font-size="10.5" font-weight="700" font-family="monospace">name</text>
+  <text x="300" y="122" fill="#94a3b8" font-size="10.5" font-weight="700" font-family="monospace">company</text>
+  <text x="500" y="122" fill="#94a3b8" font-size="10.5" font-weight="700" font-family="monospace">tier</text>
+  <text x="590" y="122" fill="#94a3b8" font-size="10.5" font-weight="700" font-family="monospace">monthly_mrr</text>
+  <text x="690" y="122" fill="#94a3b8" font-size="10.5" font-weight="700" font-family="monospace">add_on_service</text>
+
+  <!-- Row 1 (Merged 2x) -->
+  <g transform="translate(24, 134)">
+    <rect width="852" height="42" fill="#161d2b" stroke="#1f283a" stroke-width="0.5"/>
+    <text x="16" y="25" fill="#94a3b8" font-size="11" font-family="monospace">1</text>
+    <rect x="26" y="13" width="18" height="16" rx="3" fill="#2563eb" fill-opacity="0.3"/>
+    <text x="29" y="25" fill="#60a5fa" font-size="9" font-weight="700">2x</text>
+    <text x="50" y="25" fill="#00e599" font-size="11" font-family="monospace" font-weight="600">cust_101</text>
+    <text x="150" y="25" fill="#f1f5f9" font-size="11" font-family="-apple-system, sans-serif">Sophia Martinez</text>
+    <text x="276" y="25" fill="#94a3b8" font-size="11" font-family="-apple-system, sans-serif">Pacific Tech Solutions</text>
+    <text x="476" y="25" fill="#38bdf8" font-size="11" font-family="-apple-system, sans-serif">Enterprise</text>
+    <text x="566" y="25" fill="#f1f5f9" font-size="11" font-family="monospace">$4,500</text>
+    <text x="666" y="25" fill="#f59e0b" font-size="10.5" font-family="-apple-system, sans-serif">24/7 Dedicated SRE Support</text>
+  </g>
+
+  <!-- Row 2 (Merged 2x - Arabic) -->
+  <g transform="translate(24, 176)">
+    <rect width="852" height="42" fill="#141924" stroke="#1f283a" stroke-width="0.5"/>
+    <text x="16" y="25" fill="#94a3b8" font-size="11" font-family="monospace">2</text>
+    <rect x="26" y="13" width="18" height="16" rx="3" fill="#2563eb" fill-opacity="0.3"/>
+    <text x="29" y="25" fill="#60a5fa" font-size="9" font-weight="700">2x</text>
+    <text x="50" y="25" fill="#00e599" font-size="11" font-family="monospace" font-weight="600">cust_103</text>
+    <text x="150" y="25" fill="#f1f5f9" font-size="11" font-family="-apple-system, sans-serif">Tariq Al-Mansoor</text>
+    <text x="276" y="25" fill="#94a3b8" font-size="11" font-family="-apple-system, sans-serif">شركة المنصور اللوجستية</text>
+    <text x="476" y="25" fill="#38bdf8" font-size="11" font-family="-apple-system, sans-serif">Enterprise</text>
+    <text x="566" y="25" fill="#f1f5f9" font-size="11" font-family="monospace">$7,200</text>
+    <text x="666" y="25" fill="#f59e0b" font-size="10.5" font-family="-apple-system, sans-serif">High-Throughput Streaming API</text>
+  </g>
+
+  <!-- Row 3 -->
+  <g transform="translate(24, 218)">
+    <rect width="852" height="42" fill="#161d2b" stroke="#1f283a" stroke-width="0.5"/>
+    <text x="16" y="25" fill="#94a3b8" font-size="11" font-family="monospace">3</text>
+    <text x="50" y="25" fill="#00e599" font-size="11" font-family="monospace" font-weight="600">cust_102</text>
+    <text x="150" y="25" fill="#f1f5f9" font-size="11" font-family="-apple-system, sans-serif">Ethan Walker</text>
+    <text x="276" y="25" fill="#94a3b8" font-size="11" font-family="-apple-system, sans-serif">Manhattan Financial Capital</text>
+    <text x="476" y="25" fill="#a855f7" font-size="11" font-family="-apple-system, sans-serif">Pro</text>
+    <text x="566" y="25" fill="#f1f5f9" font-size="11" font-family="monospace">$1,890</text>
+    <text x="666" y="25" fill="#64748b" font-size="10.5" font-family="-apple-system, sans-serif">—</text>
+  </g>
+
+  <!-- Row 4 -->
+  <g transform="translate(24, 260)">
+    <rect width="852" height="42" fill="#141924" stroke="#1f283a" stroke-width="0.5"/>
+    <text x="16" y="25" fill="#94a3b8" font-size="11" font-family="monospace">4</text>
+    <text x="50" y="25" fill="#00e599" font-size="11" font-family="monospace" font-weight="600">cust_106</text>
+    <text x="150" y="25" fill="#f1f5f9" font-size="11" font-family="-apple-system, sans-serif">Lucas Vance</text>
+    <text x="276" y="25" fill="#94a3b8" font-size="11" font-family="-apple-system, sans-serif">Vance Robotics Corp</text>
+    <text x="476" y="25" fill="#a855f7" font-size="11" font-family="-apple-system, sans-serif">Pro</text>
+    <text x="566" y="25" fill="#f1f5f9" font-size="11" font-family="monospace">$2,400</text>
+    <text x="666" y="25" fill="#f59e0b" font-size="10.5" font-family="-apple-system, sans-serif">Edge TPU Acceleration</text>
+  </g>
+
+  <!-- Row 5 -->
+  <g transform="translate(24, 302)">
+    <rect width="852" height="42" fill="#161d2b" stroke="#1f283a" stroke-width="0.5"/>
+    <text x="16" y="25" fill="#94a3b8" font-size="11" font-family="monospace">5</text>
+    <text x="50" y="25" fill="#00e599" font-size="11" font-family="monospace" font-weight="600">cust_107</text>
+    <text x="150" y="25" fill="#f1f5f9" font-size="11" font-family="-apple-system, sans-serif">Maya Lin</text>
+    <text x="276" y="25" fill="#94a3b8" font-size="11" font-family="-apple-system, sans-serif">Midwest Retail Group</text>
+    <text x="476" y="25" fill="#a855f7" font-size="11" font-family="-apple-system, sans-serif">Pro</text>
+    <text x="566" y="25" fill="#f1f5f9" font-size="11" font-family="monospace">$2,100</text>
+    <text x="666" y="25" fill="#f59e0b" font-size="10.5" font-family="-apple-system, sans-serif">Automated Invoicing</text>
+  </g>
+</svg>

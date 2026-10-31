@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 440" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad5" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#161a23"/>
+      <stop offset="100%" stop-color="#0d0f14"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="900" height="440" rx="12" fill="url(#bgGrad5)" stroke="#262f40" stroke-width="1.5"/>
+
+  <!-- Window Header -->
+  <circle cx="28" cy="22" r="5" fill="#f43f5e"/>
+  <circle cx="44" cy="22" r="5" fill="#f59e0b"/>
+  <circle cx="60" cy="22" r="5" fill="#00e599"/>
+  <text x="80" y="26" fill="#94a3b8" font-size="12" font-family="-apple-system, sans-serif" font-weight="600">HarLens — Route &amp; Domain Tree Topology Diagram</text>
+
+  <!-- Tree Diagram Canvas -->
+  <g transform="translate(24, 52)">
+    <!-- Branch 1: app.cloudscale.io -->
+    <g transform="translate(0, 0)">
+      <rect width="270" height="364" rx="8" fill="#141924" stroke="#2563eb" stroke-opacity="0.4"/>
+      <rect x="12" y="12" width="246" height="32" rx="6" fill="#1e293b"/>
+      <text x="24" y="32" fill="#38bdf8" font-size="12" font-weight="700">🌐 app.cloudscale.io</text>
+      <text x="220" y="32" fill="#94a3b8" font-size="11">4 calls</text>
+
+      <!-- Path node 1 -->
+      <g transform="translate(16, 56)">
+        <text x="0" y="16" fill="#94a3b8" font-size="11">↳ /dashboard (1)</text>
+        <rect x="16" y="24" width="220" height="26" rx="4" fill="#19202e"/>
+        <text x="24" y="41" fill="#60a5fa" font-size="9" font-weight="700">GET</text>
+        <text x="50" y="41" fill="#00e599" font-size="10" font-weight="700">200</text>
+        <text x="74" y="41" fill="#f1f5f9" font-size="10.5">/dashboard</text>
+        <text x="175" y="41" fill="#64748b" font-size="9.5">18.4 KB</text>
+      </g>
+
+      <!-- Path node 2 -->
+      <g transform="translate(16, 126)">
+        <text x="0" y="16" fill="#94a3b8" font-size="11">↳ /static (3)</text>
+        <rect x="16" y="24" width="220" height="26" rx="4" fill="#19202e"/>
+        <text x="24" y="41" fill="#60a5fa" font-size="9" font-weight="700">GET</text>
+        <text x="50" y="41" fill="#00e599" font-size="10" font-weight="700">200</text>
+        <text x="74" y="41" fill="#f1f5f9" font-size="10.5">/static/css/dashboard.css</text>
+
+        <rect x="16" y="54" width="220" height="26" rx="4" fill="#19202e"/>
+        <text x="24" y="71" fill="#60a5fa" font-size="9" font-weight="700">GET</text>
+        <text x="50" y="71" fill="#00e599" font-size="10" font-weight="700">200</text>
+        <text x="74" y="71" fill="#f1f5f9" font-size="10.5">/static/img/brand_logo.svg</text>
+
+        <rect x="16" y="84" width="220" height="26" rx="4" fill="#19202e"/>
+        <text x="24" y="101" fill="#60a5fa" font-size="9" font-weight="700">GET</text>
+        <text x="50" y="101" fill="#00e599" font-size="10" font-weight="700">200</text>
+        <text x="74" y="101" fill="#f1f5f9" font-size="10.5">/static/js/app.bundle.js</text>
+      </g>
+    </g>
+
+    <!-- Branch 2: api.cloudscale.io -->
+    <g transform="translate(290, 0)">
+      <rect width="280" height="364" rx="8" fill="#141924" stroke="#00e599" stroke-opacity="0.4"/>
+      <rect x="12" y="12" width="256" height="32" rx="6" fill="#1e293b"/>
+      <text x="24" y="32" fill="#00e599" font-size="12" font-weight="700">⚡ api.cloudscale.io</text>
+      <text x="226" y="32" fill="#94a3b8" font-size="11">10 calls</text>
+
+      <g transform="translate(16, 56)">
+        <text x="0" y="16" fill="#94a3b8" font-size="11">↳ /v1 (10)</text>
+
+        <!-- Leaf 1 -->
+        <rect x="16" y="24" width="236" height="26" rx="4" fill="#19202e"/>
+        <text x="24" y="41" fill="#60a5fa" font-size="9" font-weight="700">GET</text>
+        <text x="50" y="41" fill="#00e599" font-size="10" font-weight="700">200</text>
+        <text x="74" y="41" fill="#f1f5f9" font-size="10.5">/v1/customers?page=1</text>
+
+        <!-- Leaf 2 -->
+        <rect x="16" y="54" width="236" height="26" rx="4" fill="#19202e"/>
+        <text x="24" y="71" fill="#60a5fa" font-size="9" font-weight="700">GET</text>
+        <text x="50" y="71" fill="#00e599" font-size="10" font-weight="700">200</text>
+        <text x="74" y="71" fill="#f1f5f9" font-size="10.5">/v1/orders?page=1</text>
+
+        <!-- Leaf 3 -->
+        <rect x="16" y="84" width="236" height="26" rx="4" fill="#19202e"/>
+        <text x="24" y="101" fill="#00e599" font-size="9" font-weight="700">POST</text>
+        <text x="52" y="101" fill="#00e599" font-size="10" font-weight="700">201</text>
+        <text x="76" y="101" fill="#f1f5f9" font-size="10.5">/v1/checkout/subscriptions</text>
+
+        <!-- Leaf 4 (400) -->
+        <rect x="16" y="114" width="236" height="26" rx="4" fill="#19202e"/>
+        <text x="24" y="131" fill="#60a5fa" font-size="9" font-weight="700">GET</text>
+        <text x="50" y="131" fill="#f59e0b" font-size="10" font-weight="700">400</text>
+        <text x="74" y="131" fill="#f1f5f9" font-size="10.5">/v1/analytics/query</text>
+
+        <!-- Leaf 5 (500) -->
+        <rect x="16" y="144" width="236" height="26" rx="4" fill="#19202e"/>
+        <text x="24" y="161" fill="#00e599" font-size="9" font-weight="700">POST</text>
+        <text x="52" y="161" fill="#f43f5e" font-size="10" font-weight="700">500</text>
+        <text x="76" y="161" fill="#f1f5f9" font-size="10.5">/v1/payment-gateway/webhooks</text>
+      </g>
+    </g>
+
+    <!-- Branch 3: cdn.cloudscale.io -->
+    <g transform="translate(590, 0)">
+      <rect width="260" height="364" rx="8" fill="#141924" stroke="#a855f7" stroke-opacity="0.4"/>
+      <rect x="12" y="12" width="236" height="32" rx="6" fill="#1e293b"/>
+      <text x="24" y="32" fill="#a855f7" font-size="12" font-weight="700">📦 cdn.cloudscale.io</text>
+      <text x="210" y="32" fill="#94a3b8" font-size="11">3 calls</text>
+
+      <g transform="translate(16, 56)">
+        <text x="0" y="16" fill="#94a3b8" font-size="11">↳ /reports (1)</text>
+        <rect x="16" y="24" width="210" height="26" rx="4" fill="#19202e"/>
+        <text x="24" y="41" fill="#60a5fa" font-size="9" font-weight="700">GET</text>
+        <text x="50" y="41" fill="#00e599" font-size="10" font-weight="700">200</text>
+        <text x="74" y="41" fill="#f1f5f9" font-size="10.5">financial_metrics.csv</text>
+      </g>
+
+      <g transform="translate(16, 126)">
+        <text x="0" y="16" fill="#94a3b8" font-size="11">↳ /docs (1)</text>
+        <rect x="16" y="24" width="210" height="26" rx="4" fill="#19202e"/>
+        <text x="24" y="41" fill="#60a5fa" font-size="9" font-weight="700">GET</text>
+        <text x="50" y="41" fill="#00e599" font-size="10" font-weight="700">200</text>
+        <text x="74" y="41" fill="#f1f5f9" font-size="10.5">sla_agreement_2026.pdf</text>
+      </g>
+    </g>
+  </g>
+</svg>
