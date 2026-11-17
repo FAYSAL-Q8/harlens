@@ -1,6 +1,6 @@
 # HarLens
 
-> **An advanced, offline-first HTTP Archive (HAR) analyzer and multi-session traffic inspector designed for high-performance network debugging.**  
+> **An advanced, offline-first HTTP Archive (HAR) analyzer built for API testing, web security auditing, and network traffic forensics.**  
 > Analyzing complex HTTP archive files across multiple sessions and microservices often leads to browser memory bloat, unreadable payloads, and fragmented workflows; **HarLens** solves this by providing a unified, client-side engine that ingests, normalizes, and cross-correlates multi-archive network logs with native format previews, Arabic/Unicode deep search, JSON table unrolling, and native Excel XLSX export.
 
 [![Live Web Tool](https://img.shields.io/badge/Live%20App-harlens.vercel.app-2563eb?style=for-the-badge&logo=vercel&logoColor=white)](https://harlens.vercel.app/)
