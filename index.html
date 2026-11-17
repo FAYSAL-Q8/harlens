@@ -6,7 +6,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HarLens - Advanced Multi-Archive HTTP Analyzer & Viewer</title>
   <meta name="description" content="High-performance, offline-first multi-archive HTTP Archive (HAR) analyzer. Features Arabic/Unicode deep search, native format previews, JSON table unroller with duplicate merging, and client-side XLSX export." />
   <meta name="keywords" content="har viewer, har analyzer, http archive, network traffic inspector, har to excel, json table unroller, har reader, merge har files, arabic har search, offline har tool, devtools network log" />
@@ -20,18 +20,20 @@
   <meta property="og:url" content="https://harlens.vercel.app/" />
   <meta property="og:title" content="HarLens - Advanced Multi-Archive HTTP Analyzer" />
   <meta property="og:description" content="High-performance client-side HAR viewer with multi-file merging, JSON unrolling, and XLSX export." />
-  <meta property="og:image" content="https://harlens.vercel.app/assets/icon.svg" />
+  <meta property="og:image" content="https://harlens.vercel.app/assets/og-preview.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
 
   <!-- Twitter -->
-  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:url" content="https://harlens.vercel.app/" />
   <meta name="twitter:title" content="HarLens - Advanced Multi-Archive HTTP Analyzer" />
   <meta name="twitter:description" content="High-performance client-side HAR viewer with multi-file merging, JSON unrolling, and XLSX export." />
-  <meta name="twitter:image" content="https://harlens.vercel.app/assets/icon.svg" />
+  <meta name="twitter:image" content="https://harlens.vercel.app/assets/og-preview.png" />
 
   <meta name="theme-color" content="#161a23" />
   <link rel="icon" type="image/svg+xml" href="assets/icon.svg" />
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/style.css?v=2.1.0" />
 
   <!-- Schema.org Structured Data -->
   <script type="application/ld+json">
@@ -97,6 +99,9 @@
       </svg>
       <span style="font-weight:600;font-size:13px;">Choose HAR File(s) or Drop Anywhere</span>
       <span style="font-size:11px;color:var(--text-muted);">Select one or multiple .har, .json, or raw HTTP log files to load and combine</span>
+      <button type="button" id="loadSampleHarBtn" class="btn btn-sm btn-primary" style="margin-top:6px;" onclick="event.stopPropagation(); loadSampleHar();">
+        ⚡ Try Sample HAR (No File Needed)
+      </button>
     </section>
 
     <!-- Search Engine Indexable Summary & Noscript Fallback -->
@@ -387,6 +392,6 @@
     </div>
   </div>
 
-  <script src="js/app.js"></script>
+  <script src="js/app.js?v=2.1.0"></script>
 </body>
 </html>

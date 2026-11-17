@@ -375,6 +375,183 @@ function loadMultipleHarFiles(files) {
   });
 }
 
+function loadSampleHar() {
+  const sampleHar = {
+    log: {
+      version: '1.2',
+      creator: { name: 'HarLens Demo', version: '2.1.0' },
+      entries: [
+        {
+          startedDateTime: '2026-11-17T10:00:00.120Z',
+          time: 142,
+          request: {
+            method: 'GET',
+            url: 'https://api.shop-demo.example/v1/orders?page=1&limit=3',
+            httpVersion: 'HTTP/2.0',
+            headers: [
+              { name: 'Accept', value: 'application/json' },
+              { name: 'Authorization', value: 'Bearer demo_token_redacted' }
+            ],
+            queryString: [
+              { name: 'page', value: '1' },
+              { name: 'limit', value: '3' }
+            ],
+            headersSize: 180,
+            bodySize: 0
+          },
+          response: {
+            status: 200,
+            statusText: 'OK',
+            httpVersion: 'HTTP/2.0',
+            headers: [{ name: 'Content-Type', value: 'application/json; charset=utf-8' }],
+            content: {
+              size: 512,
+              mimeType: 'application/json',
+              text: JSON.stringify({
+                page: 1,
+                items: [
+                  { order_id: 'ORD-1001', customer: 'أحمد العلي', city: 'الرياض', status: 'delivered', total_usd: 149.50 },
+                  { order_id: 'ORD-1002', customer: 'Sara Johnson', city: 'Austin', status: 'shipped', total_usd: 89.00 },
+                  { order_id: 'ORD-1003', customer: 'خالد المنصور', city: 'الكويت', status: 'processing', total_usd: 230.00 }
+                ]
+              })
+            },
+            headersSize: 120,
+            bodySize: 512
+          }
+        },
+        {
+          startedDateTime: '2026-11-17T10:00:00.380Z',
+          time: 118,
+          request: {
+            method: 'GET',
+            url: 'https://api.shop-demo.example/v1/orders?page=2&limit=3',
+            httpVersion: 'HTTP/2.0',
+            headers: [{ name: 'Accept', value: 'application/json' }],
+            queryString: [
+              { name: 'page', value: '2' },
+              { name: 'limit', value: '3' }
+            ],
+            headersSize: 150,
+            bodySize: 0
+          },
+          response: {
+            status: 200,
+            statusText: 'OK',
+            httpVersion: 'HTTP/2.0',
+            headers: [{ name: 'Content-Type', value: 'application/json; charset=utf-8' }],
+            content: {
+              size: 488,
+              mimeType: 'application/json',
+              text: JSON.stringify({
+                page: 2,
+                items: [
+                  { order_id: 'ORD-1003', customer: 'خالد المنصور', city: 'الكويت', status: 'delivered', total_usd: 230.00 },
+                  { order_id: 'ORD-1004', customer: 'Noura Al-Sabah', city: 'Kuwait City', status: 'delivered', total_usd: 315.25 }
+                ]
+              })
+            },
+            headersSize: 120,
+            bodySize: 488
+          }
+        },
+        {
+          startedDateTime: '2026-11-17T10:00:00.610Z',
+          time: 64,
+          request: {
+            method: 'POST',
+            url: 'https://api.shop-demo.example/v1/auth/session',
+            httpVersion: 'HTTP/2.0',
+            headers: [{ name: 'Content-Type', value: 'application/json' }],
+            queryString: [],
+            postData: {
+              mimeType: 'application/json',
+              text: JSON.stringify({ client: 'web', locale: 'ar-KW', remember: true })
+            },
+            headersSize: 140,
+            bodySize: 48
+          },
+          response: {
+            status: 200,
+            statusText: 'OK',
+            httpVersion: 'HTTP/2.0',
+            headers: [{ name: 'Content-Type', value: 'application/json' }],
+            content: {
+              size: 128,
+              mimeType: 'application/json',
+              text: JSON.stringify({ authenticated: true, role: 'analyst', region: 'me-south-1' })
+            },
+            headersSize: 110,
+            bodySize: 128
+          }
+        },
+        {
+          startedDateTime: '2026-11-17T10:00:00.820Z',
+          time: 312,
+          request: {
+            method: 'GET',
+            url: 'https://api.shop-demo.example/v1/inventory/legacy-sync',
+            httpVersion: 'HTTP/2.0',
+            headers: [{ name: 'Accept', value: 'application/json' }],
+            queryString: [],
+            headersSize: 130,
+            bodySize: 0
+          },
+          response: {
+            status: 502,
+            statusText: 'Bad Gateway',
+            httpVersion: 'HTTP/2.0',
+            headers: [{ name: 'Content-Type', value: 'application/json' }],
+            content: {
+              size: 96,
+              mimeType: 'application/json',
+              text: JSON.stringify({ error: 'UPSTREAM_TIMEOUT', code: 502, retryable: true })
+            },
+            headersSize: 105,
+            bodySize: 96
+          }
+        },
+        {
+          startedDateTime: '2026-11-17T10:00:01.050Z',
+          time: 54,
+          request: {
+            method: 'GET',
+            url: 'https://cdn.shop-demo.example/portal/status.html',
+            httpVersion: 'HTTP/2.0',
+            headers: [{ name: 'Accept', value: 'text/html' }],
+            queryString: [],
+            headersSize: 125,
+            bodySize: 0
+          },
+          response: {
+            status: 200,
+            statusText: 'OK',
+            httpVersion: 'HTTP/2.0',
+            headers: [{ name: 'Content-Type', value: 'text/html; charset=utf-8' }],
+            content: {
+              size: 420,
+              mimeType: 'text/html',
+              text: '<!DOCTYPE html><html><body style="font-family:sans-serif;padding:24px;background:#0f172a;color:#e2e8f0;"><h2 style="color:#00e599;margin:0 0 8px;">Service Health: Operational</h2><p style="margin:0;color:#94a3b8;">Sandboxed HTML replay rendered locally inside HarLens.</p></body></html>'
+            },
+            headersSize: 115,
+            bodySize: 420
+          }
+        }
+      ]
+    }
+  };
+
+  try {
+    const jsonStr = JSON.stringify(sampleHar);
+    addArchiveToStore(jsonStr, 'sample-ecommerce-traffic.har', jsonStr.length);
+    syncActiveArchive();
+    Native.toast('Loaded sample HAR archive');
+    Native.vibrate(40);
+  } catch (err) {
+    Native.toast(`Failed to load sample HAR: ${err.message}`);
+  }
+}
+
 // Resilient URL Parser (handles malformed, relative, and reverse-engineered URLs)
 function safeParseUrl(rawUrl) {
   if (!rawUrl) return { host: 'unknown', pathname: '/', search: '', basePath: '/' };

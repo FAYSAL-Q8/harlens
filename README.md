@@ -15,27 +15,27 @@ Access the web tool directly from any browser or mobile device:
 
 ### 👉 **[https://harlens.vercel.app/](https://harlens.vercel.app/)**
 
-Simply drag & drop your `.har` file(s) into the browser window to start analyzing immediately. All processing runs 100% locally on your machine—no data is uploaded to any server.
+Simply drag & drop your `.har` file(s) into the browser window—or click **⚡ Try Sample HAR** to explore instantly with zero setup. All processing runs 100% locally on your machine; no data is uploaded to any server.
 
 ---
 
-## 📸 Visual Walkthrough & Core Capabilities
+## 📸 Live Demo Screenshots & Visual Walkthrough
 
 ### 1. Multi-Archive Traffic & Status Overview
 Inspect multi-session archives with real-time transfer metrics, HTTP status code badges (`2xx`, `3xx`, `4xx`, `5xx`), method tags, and granular asset category pills (`JSON`, `HTML`, `JS`, `CSS`, `Images`, `PDF`, `Sheets`).
-![Multi-Archive Traffic Overview](assets/screenshots/01-traffic-overview.svg)
+![Multi-Archive Traffic Overview](assets/screenshots/demo-traffic-overview.png)
 
 ---
 
 ### 2. Interactive JSON Table Unroller & Duplicate Merging
-Automatically unroll nested JSON arrays and sequential paged API calls into clean interactive spreadsheets. Collapse redundant records sharing common keys (e.g., `customer_id`, `id`, `uuid`) into aggregated rows with duplicate badges (`2x`), live column toggling, drag-resizing, and instant **Excel XLSX export**.
-![JSON Table Unroller & Duplicate Merging](assets/screenshots/02-json-table-unroller.svg)
+Automatically unroll nested JSON arrays and sequential paged API calls into clean interactive spreadsheets. Collapse redundant records sharing common keys (e.g., `order_id`, `id`, `uuid`) into aggregated rows with duplicate badges (`2x`), live column toggling, drag-resizing, and instant **Excel XLSX export**.
+![JSON Table Unroller & Duplicate Merging](assets/screenshots/demo-json-table-unroller.png)
 
 ---
 
-### 3. Native Format Previews & Sandboxed Webpage Replay
-Replay captured HTML web pages directly inside an isolated sandbox with automated virtual asset rewriting that resolves CSS, JS, and image assets from within the HAR archive. Includes native format inspectors for spreadsheets, SVGs, and PDF documents.
-![Format Preview & Webpage Replay](assets/screenshots/03-format-preview.svg)
+### 3. Native Format Previews, Detail Inspector & Sandboxed Webpage Replay
+Inspect JSON responses with one-click copy, view raw source code, headers, query parameters, ready-to-paste cURL commands, and safely replay captured HTML web pages inside an isolated sandbox.
+![Format Preview & Detail Inspector](assets/screenshots/demo-detail-inspector.png)
 
 ---
 
@@ -47,7 +47,7 @@ Perform instant multi-token search across URLs, request/response headers, query 
 
 ### 5. Hierarchical Route & Domain Tree Topology
 Gain immediate structural visibility over multi-domain microservice architectures, API route hierarchies, and error distributions in an interactive tree topology canvas.
-![Tree Topology Diagram](assets/screenshots/05-tree-diagram.svg)
+![Tree Topology Diagram](assets/screenshots/demo-tree-diagram.png)
 
 ---
 
