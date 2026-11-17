@@ -410,9 +410,9 @@ function loadSampleHar() {
               text: JSON.stringify({
                 page: 1,
                 items: [
-                  { order_id: 'ORD-1001', customer: 'أحمد العلي', city: 'الرياض', status: 'delivered', total_usd: 149.50 },
+                  { order_id: 'ORD-1001', customer: 'Alex Mercer', city: 'New York', status: 'delivered', total_usd: 149.50 },
                   { order_id: 'ORD-1002', customer: 'Sara Johnson', city: 'Austin', status: 'shipped', total_usd: 89.00 },
-                  { order_id: 'ORD-1003', customer: 'خالد المنصور', city: 'الكويت', status: 'processing', total_usd: 230.00 }
+                  { order_id: 'ORD-1003', customer: 'Liam Weber', city: 'Berlin', status: 'processing', total_usd: 230.00 }
                 ]
               })
             },
@@ -446,8 +446,8 @@ function loadSampleHar() {
               text: JSON.stringify({
                 page: 2,
                 items: [
-                  { order_id: 'ORD-1003', customer: 'خالد المنصور', city: 'الكويت', status: 'delivered', total_usd: 230.00 },
-                  { order_id: 'ORD-1004', customer: 'Noura Al-Sabah', city: 'Kuwait City', status: 'delivered', total_usd: 315.25 }
+                  { order_id: 'ORD-1003', customer: 'Liam Weber', city: 'Berlin', status: 'delivered', total_usd: 230.00 },
+                  { order_id: 'ORD-1004', customer: 'Claire Moreau', city: 'Paris', status: 'delivered', total_usd: 315.25 }
                 ]
               })
             },
@@ -466,7 +466,7 @@ function loadSampleHar() {
             queryString: [],
             postData: {
               mimeType: 'application/json',
-              text: JSON.stringify({ client: 'web', locale: 'ar-KW', remember: true })
+              text: JSON.stringify({ client: 'web', locale: 'en-US', remember: true })
             },
             headersSize: 140,
             bodySize: 48
@@ -479,7 +479,7 @@ function loadSampleHar() {
             content: {
               size: 128,
               mimeType: 'application/json',
-              text: JSON.stringify({ authenticated: true, role: 'analyst', region: 'me-south-1' })
+              text: JSON.stringify({ authenticated: true, role: 'analyst', region: 'us-east-1' })
             },
             headersSize: 110,
             bodySize: 128
